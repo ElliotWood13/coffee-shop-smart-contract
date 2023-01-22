@@ -1,9 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import {
+  Grid,
+  Button,
+  Container,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
+import styles from "../styles/Index.module.css";
+import CoffeeIcon from "@mui/icons-material/Coffee";
 
 export default function Home() {
   return (
@@ -14,13 +20,38 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
-        </div>
+      <main>
+        <Container fixed className={styles.container}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{ fontSize: 14, marginBottom: 3 }}
+                    color="text.secondary"
+                    gutterBottom
+                  >
+                    Loyalty Card
+                  </Typography>
+                  <Grid container spacing={2}>
+                    {Array.from(Array(10)).map((_, index) => (
+                      <Grid item xs={5} sm={4} md={4} key={index}>
+                        <CoffeeIcon sx={{ height: "40px", width: "40px" }} />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </CardContent>
+              </Card>
+              <Button variant="contained">Connect Wallet</Button>
+            </Grid>
+          </Grid>
+        </Container>
       </main>
     </>
   );
